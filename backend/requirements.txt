@@ -1,0 +1,4 @@
+requests
+mysql-connector
+flask
+flask_restx
