@@ -17,4 +17,4 @@
 - [Kévin Moraiville](https://github.com/Slupshi) : Frontend and Backend
 
 ### Repository stats :
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=celian-hamon&repo=CUBEIOT)](https://github.com/Kae-Tempest/CUBEIOT/)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=celian-hamon&repo=CUBEIOT)]()
