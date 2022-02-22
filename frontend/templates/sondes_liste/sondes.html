@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Liste des sondes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="icon" href="https://img.icons8.com/color-glass/16/000000/ok.png" type="image/png" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-y: hidden;
+            /* Hide vertical scrollbar */
+            overflow-x: hidden;
+            /* Hide horizontal scrollbar */
+        }
+
+        @keyframes spawn {
+            0% {
+                opacity: 0;
+                transform: translateY(50%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+        @keyframes AnimationName {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        div.row {
+            animation: spawn 0.5s;
+            border-radius: 1rem;
+        }
+
+        .bi-check-circle-fill {
+            color: #1a7f37;
+        }
+
+        .bi-exclamation-circle-fill {
+            color: #cf222e;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .card {
+            transition: all .5s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .gradient-custom {
+            background: linear-gradient(320deg, #00ffff, #f200ff);
+            background-size: 200% 200%;
+            animation: AnimationName 20s ease infinite;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div.home>.bi {
+            color: white;
+            font-size: 25px;
+            margin-right: 5px;
+        }
+
+        div.home>div.homenav>a>.bi {
+            color: white;
+            font-size: 25px;
+        }
+
+        .home:hover {
+
+            transform: translateX(-50px);
+        }
+
+        .home:hover i.arrow {
+            transform: rotate(180deg);
+        }
+
+        .homenav {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            height: 125px;
+            margin-left: 30px;
+            border-radius: 7px;
+            align-items: center;
+            position: absolute;
+            width: 50px;
+            background-color: var(--bs-dark);
+        }
+
+        .home {
+            transition: all .5s;
+            padding: 15px;
+            background-color: var(--bs-dark);
+            border-radius: 7px;
+            margin-left: 98%;
+            position: absolute;
+            width: 100px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="home" id="nav">
+            <i class="bi bi-arrow-bar-left arrow" id="arrow"></i>
+            <div class="homenav">
+                <a href="/internal">
+                    <i class="bi bi-house-fill"></i>
+                </a>
+                <a href="/profile"><i class="bi bi-person-fill"></i></a>
+                <a href="/sondes"><i class="bi bi-card-list"></i></a>
+            </div>
+        </div>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                {{if .sondes}}
+                {{range .sondes}}
+                <div class="col">
+                    <a href="/sonde/{{.Id}}">
+                        <div class="card bg-dark text-white" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Sonde n°{{.Id}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    {{if (eq .Active "1")}}
+                                    <i class="bi bi-check-circle-fill"></i> Activée
+                                    {{else}}
+                                    <i class="bi bi-exclamation-circle-fill"></i> Desactivée
+                                    {{end}}
+                                </h6>
+                                <p class="card-text">
+                                    Latitude : {{.Latitude}}
+                                    <br>
+                                    Longitude : {{.Longitude}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{end}}
+                {{end}}
+                <div class="col">
+                    <a href="/createSonde">
+                        <div class="card bg-dark text-white" style="width: 18rem;">
+                            <div class="card-body text-center">
+                                <i class="bi bi-plus-square-dotted"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

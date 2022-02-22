@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sonde</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="icon" href="https://img.icons8.com/color-glass/16/000000/ok.png" type="image/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        * {
+            transition: all .5s;
+            margin: 0;
+        }
+
+        body {
+            overflow-y: hidden;
+            /* Hide vertical scrollbar */
+            overflow-x: hidden;
+            /* Hide horizontal scrollbar */
+        }
+
+        @keyframes spawn {
+            0% {
+                opacity: 0;
+                transform: translateY(50%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+        @keyframes AnimationName {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        .right {
+            transition: all .5s;
+            float: right;
+            text-decoration: none;
+            color: #5e5e5e;
+        }
+
+        .right:hover {
+            color: rgb(218, 218, 218);
+        }
+
+        div.row {
+            animation: spawn 0.5s;
+            border-radius: 1rem;
+        }
+
+        .bi-check-circle-fill {
+            color: #1a7f37;
+        }
+
+        .bi-exclamation-circle-fill {
+            color: #cf222e;
+        }
+
+        .gradient-custom {
+            overflow: hidden;
+            background: linear-gradient(320deg, #00ffff, #f200ff);
+            background-size: 200% 200%;
+            animation: AnimationName 20s ease infinite;
+        }
+
+        .btn-primary {
+            transition: all .5s;
+            background-color: #ae00ff;
+            border: none;
+            margin-bottom: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #00b7ff !important;
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div.home>.bi {
+            color: white;
+            font-size: 25px;
+            margin-right: 5px;
+        }
+
+        div.home>div.homenav>a>.bi {
+            color: white;
+            font-size: 25px;
+        }
+
+        .home:hover {
+
+            transform: translateX(-50px);
+        }
+
+        .home:hover i.arrow {
+            transform: rotate(180deg);
+        }
+
+        .homenav {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            height: 125px;
+            margin-left: 30px;
+            border-radius: 7px;
+            align-items: center;
+            position: absolute;
+            width: 50px;
+            background-color: var(--bs-dark);
+        }
+
+        .home {
+            transition: all .5s;
+            padding: 15px;
+            background-color: var(--bs-dark);
+            border-radius: 7px;
+            margin-left: 98%;
+            position: absolute;
+            width: 100px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .map-container-5 {
+            overflow: hidden;
+            position: relative;
+            margin-top: 10px;
+            border-radius: 0.5rem;
+        }
+
+        .map-container-5 iframe {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="home" id="nav">
+            <i class="bi bi-arrow-bar-left arrow" id="arrow"></i>
+            <div class="homenav">
+                <a href="/internal">
+                    <i class="bi bi-house-fill"></i>
+                </a>
+                <a href="/profile"><i class="bi bi-person-fill"></i></a>
+                <a href="/sondes"><i class="bi bi-card-list"></i></a>
+            </div>
+        </div>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-16 col-md-10 col-lg-8 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem ;">
+                        <div class="card-body">
+                            <h5 class="card-title">Sonde n°{{.Id}} <a href="/sondes" class="right">Retour <i
+                                        class="bi bi-back"></i></a></h5>
+
+                            <p class="card-text">
+                                {{if (eq .Active "1")}}
+                                <i class="bi bi-check-circle-fill"></i> Activée
+                                {{else}}
+                                <i class="bi bi-exclamation-circle-fill"></i> Désactivée
+                                {{end}}
+                                <br>
+                                Latitude : {{.Latitude}}
+                                <br>
+                                Longitude : {{.Longitude}}
+                            </p>
+                            <a href="/sonde/{{.Id}}/releve" class="btn btn-primary">
+                                Liste des relevés
+                            </a>
+                            <a href="/updatesonde/{{.Id}}" class="btn btn-primary">Modifier la sonde</a>
+
+                            <div style="
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            ">
+                                {{if (eq .Active "1")}}
+                                <form method="put" action="/state/{{.Id}}/activated" class="">
+
+                                    <button type="submit" class="btn btn-danger">Desactiver</button>
+                                </form>
+                                {{else}}
+                                <form method="put" action="/state/{{.Id}}/desactivated" class="">
+
+                                    <button type="submit" class="btn btn-success">Activer</button>
+                                </form>
+                                {{end}}
+                                <form method="post" action="/sonde/{{.Id}}" class="" style="float: right;">
+                                    <button type="submit" class="btn btn-danger">Supprimer la sonde</button>
+                                </form>
+                            </div>
+                            <div id="map-container-google-9" class="z-depth-1-half map-container-5"
+                                style="height: 300px">
+                                <iframe
+                                    src="https://maps.google.com/maps?q={{.Latitude}}, {{.Longitude}}&z=5&ie=UTF8&output=embed"
+                                    frameborder="0" style="border:0" marginheight="100000" allowfullscreen></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+
+</html>
