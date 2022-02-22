@@ -17,4 +17,4 @@
 - [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=&color=%23000000&size=15&vCenter=true&width=200&height=15&lines=K%C3%A9vin+MORAINVILLE)](https://github.com/Slupshi) : Frontend and Backend
 
 ### Repository stats :
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Kae-Tempest&repo=CUBEIOT)](https://github.com/Kae-Tempest/CUBEIOT/)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=celian-hamon&repo=CUBEIOT)](https://github.com/Kae-Tempest/CUBEIOT/)
