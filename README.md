@@ -40,9 +40,6 @@ $ mysql -u username -p database_name < create-database.sql
   
 ```sh
 $ sudo chmod 600 install-venv.sh
-```
-
-```sh
 $ ./install-venv.sh
 ```
 ## Frontend :
