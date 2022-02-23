@@ -13,7 +13,7 @@
 ## Backend :
 ### Summary :
 <p>
-The backend is composed by a REST API wich is made with <b>Python3<img src="https://img.icons8.com/color/48/000000/python--v1.png"height="20px"/></b> and <b>Flask</b> </br>
+The backend is composed by a REST API wich is made with <b>Python3<img src="https://img.icons8.com/color/48/000000/python--v1.png"height="15px"/></b> and <b>Flask</b> </br>
 It is splitted in 3 sections :
   <ul>
     <b><li>Probe</li>
@@ -65,7 +65,7 @@ $ export FLASK_APP=main
 ## Frontend :
 ### Summary :
 
-<p>The <b>Frontend</b> is composed of a simple http server in golang and a bunch of html pages</p>
+<p>The <b>Frontend</b> is composed of a simple http server in golang<img src="data:image/png;base64,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"height="15px" > and a bunch of html pages</p>
 <p>For convenience the web pages are built around purged bootstrap</p>
 
 ### Deployement :
