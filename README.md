@@ -49,10 +49,9 @@ $ source venv/bin/activate
 $ export FLASK_APP=main
 ```
 
-<p>4. Modify the config file with your databases credentials</p>
+<p>4. Modify the config file with your databases credentials in backend/config.json</p>
 
 ```json
-// /backend/config.json
 {
     "host": "localhost",
     "user": "root",
