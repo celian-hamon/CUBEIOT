@@ -33,17 +33,55 @@ A test suite is available for the whole API, it is built with the package reques
 
  <p>  1. Deploy the database :</p>
   
-```sh
-$ mysql -u username -p database_name < create-database.sql
+```shell
+$ mysql -u <username> -p <database_name> < create-database.sql
 ```
   <p> 2. Run the virtual env installation script:</p>
   
-```sh
+```shell
 $ sudo chmod 600 install-venv.sh
 $ ./install-venv.sh
 ```
-## Frontend :
+<p>3. Activate venv, Set venv variables and run the server</p>
 
+```shell
+$ source venv/bin/activate
+$ export FLASK_APP=main
+```
+
+<p>4. Modify the config file with your databases credentials</p>
+
+```json
+// /backend/config.json
+{
+    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "database": "cube"
+}
+```
+<p>That's it you now have a working backend api</p>
+
+## Frontend :
+### Summary :
+
+<p>The <b>Frontend</b> is composed of a simple http server in golang and a bunch of html pages</p>
+<p>For convenience the web pages are built around purged bootstrap</p>
+
+### Deployement :
+
+ <p>  1. Build a binary :</p>
+  
+```golang
+$ go build .
+```
+
+ <p>  2. Run the binary :</p>
+
+```shell
+$ sudo chmod 600 frontend
+$ ./frontend
+```
 ## Collaborators :
 - [Célian HAMON](https://github.com/celian-hamon) : Backend server in flask, Frontend server in Golang, Raspberry setup and programmation, database, test suite and postman suite
 - [Clément Lessieur](https://github.com/King-Julian-Pool) : Frontend and Backend

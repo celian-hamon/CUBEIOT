@@ -1,4 +1,4 @@
-module web-serveur
+module frontend
 
 go 1.17
 
