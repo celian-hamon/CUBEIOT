@@ -82,7 +82,7 @@ $ sudo chmod 600 frontend
 $ ./frontend
 ```
 ## Collaborators :
-- [Célian HAMON](https://github.com/celian-hamon) : Backend server in flask, Frontend server in Golang, Raspberry setup and programmation, database, test suite and postman suite
+- [Célian HAMON](https://github.com/celian-hamon) : Backend server in flask, Frontend server in Golang, Raspberry setup and programmation, database, test suite and postman suite, documentation, github workflows
 - [Clément Lessieur](https://github.com/King-Julian-Pool) : Frontend and Backend
 - [Kévin Moraiville](https://github.com/Slupshi) : Frontend and Backend
 
